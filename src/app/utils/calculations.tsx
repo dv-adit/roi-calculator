@@ -1,4 +1,14 @@
-export function calculateROI(formData: any) {
+export interface ROIData {
+  totalValueOfSignUps: number;
+  totalValueOfImpressions: number;
+  totalIncreaseInAppDownloads: number;
+  totalImprovementInAdsRetargetingEfficiency: number;
+  increasedCartSizeForTargetedCustomers: number;
+  totalImprovementInRevenuePerStore: number;
+  totalImprovementInRevenue: number;
+}
+
+export function calculateROI(formData: any): ROIData {
     // Perform ROI calculations based on the form data
     const estimatedFootfall = 365 * formData.averageStoreSize / 20;
     const captivePortalImpressions = estimatedFootfall * 0.1;

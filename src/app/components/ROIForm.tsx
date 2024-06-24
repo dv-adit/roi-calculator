@@ -26,7 +26,7 @@ const formSchema = z.object({
   }),
 });
 
-export function ROIForm({ onSubmit }) {
+export function ROIForm({ onSubmit }: { onSubmit: any }) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {

@@ -1,7 +1,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { BarChart, Line, Bar, XAxis, YAxis, CartesianGrid, ComposedChart, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { ROIData } from "../utils/calculations";
 
-export function ROIDashboard({ data }) {
+export function ROIDashboard({ data }: { data: ROIData }) {
   const chartData = [
     { name: 'Total Value of Sign Ups', value: data.totalValueOfSignUps },
     { name: 'Total Value of Impressions', value: data.totalValueOfImpressions },

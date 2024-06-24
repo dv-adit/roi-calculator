@@ -11,6 +11,7 @@ export function useCustomerEvents() {
         type: eventTypes[Math.floor(Math.random() * eventTypes.length)],
         timestamp: new Date().toISOString(),
       };
+      //@ts-ignore
       setEvents(prevEvents => [...prevEvents, newEvent]);
     }, 5000); // Generate a new event every 5 seconds
 
