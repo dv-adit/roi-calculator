@@ -16,10 +16,12 @@ export default function Home() {
 
   return (
     <main>
+      <div className="container">
       <h1>Guest Wi-Fi ROI Calculator</h1>
       <ROIForm onSubmit={handleFormSubmit} />
       {roiData && <ROIDashboard data={roiData} />}
       {/* Display customer events */}
+      </div>
     </main>
   );
 }
