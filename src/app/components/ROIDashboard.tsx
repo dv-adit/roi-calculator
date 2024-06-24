@@ -15,7 +15,7 @@ export function ROIDashboard({ data }) {
       <Card>
         <CardHeader>
           <CardTitle>New Sign-ups</CardTitle>
-          <CardDescription>If each customer is worth $5, here's how much you saved</CardDescription>
+          <CardDescription>If each customer is worth $5, here&apos;s how much you saved</CardDescription>
         </CardHeader>
         <CardContent>
           <p className="text-2xl font-bold">${data.totalValueOfSignUps.toLocaleString()}</p>
