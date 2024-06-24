@@ -14,7 +14,8 @@ export function ROIDashboard({ data }) {
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       <Card>
         <CardHeader>
-          <CardTitle>Total Improvement in Revenue</CardTitle>
+          <CardTitle>Increase in Revenue</CardTitle>
+          <CardDescription>Estimated increase in Annual revenue across the board</CardDescription>
         </CardHeader>
         <CardContent>
           <p className="text-2xl font-bold">${data.totalImprovementInRevenue.toFixed(2)}</p>
@@ -22,7 +23,8 @@ export function ROIDashboard({ data }) {
       </Card>
       <Card>
         <CardHeader>
-          <CardTitle>Total Improvement in Revenue per Store</CardTitle>
+          <CardTitle>Increase in Revenue per Store</CardTitle>
+          <CardDescription>Estimated increase in annual revenue per store</CardDescription>
         </CardHeader>
         <CardContent>
           <p className="text-2xl font-bold">${data.totalImprovementInRevenuePerStore.toFixed(2)}</p>

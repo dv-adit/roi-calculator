@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -19,8 +18,8 @@ const formSchema = z.object({
   numberOfStores: z.number().min(1, {
     message: "Number of stores must be at least 1.",
   }),
-  averageCartSize: z.number().min(1, {
-    message: "Average cart size must be at least 1.",
+  averageCartSize: z.number().min(10, {
+    message: "Average cart size must be at least $10.",
   }),
   averageStoreSize: z.number().min(1, {
     message: "Average store size must be at least 1.",
@@ -34,7 +33,7 @@ export function ROIForm({ onSubmit }) {
       name: "",
       email: "",
       loyaltyCard: "",
-      numberOfStores: 800,
+      numberOfStores: 100,
       averageCartSize: 100,
       averageStoreSize: 5000,
     },
