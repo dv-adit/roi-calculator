@@ -17,7 +17,8 @@ export default function Home() {
   return (
     <main>
       <div className="container">
-      <h1>Guest Wi-Fi ROI Calculator</h1>
+      <h1 className="text-xl font-bold py-2">Guest Wi-Fi ROI Calculator</h1>
+      <h2 className="py-2 font-semibold">Get a sneak peek into your revenue gains by implementing Presence Engage with Datavalet.</h2>
       <ROIForm onSubmit={handleFormSubmit} />
       {roiData && <ROIDashboard data={roiData} />}
       {/* Display customer events */}

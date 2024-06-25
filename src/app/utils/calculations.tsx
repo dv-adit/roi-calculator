@@ -10,9 +10,9 @@ export interface ROIData {
 
 export function calculateROI(formData: any): ROIData {
     // Perform ROI calculations based on the form data
-    const estimatedFootfall = 365 * formData.averageStoreSize / 20;
+    const estimatedFootfall = formData.averageStoreSize / 20 * 365;
     const captivePortalImpressions = estimatedFootfall * 0.1;
-    const netNewSignUps = estimatedFootfall * 0.05;
+    const netNewSignUps = estimatedFootfall * 0.05;  // At 50% sign up rate
     const validSignUps = 0.3;
     const validCustomerEmails = netNewSignUps * validSignUps;
     
