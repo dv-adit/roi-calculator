@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -6,6 +7,8 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Input } from "@/components/ui/input";
 import { Checkbox } from '@/components/ui/checkbox';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Slider } from "@/components/ui/slider";
+
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -18,6 +21,9 @@ const formSchema = z.object({
     message: "Select the industry your business is in.",
   }),
   signUpOptional: z.boolean(),
+  // loyaltyCard: z.string().min(6, {
+  //   message: "Loyalty card number must be at least 6 characters.",
+  // }),
   numberOfStores: z.number().min(1, {
     message: "Number of stores must be at least 1.",
   }),
@@ -30,6 +36,9 @@ const formSchema = z.object({
 });
 
 export function ROIForm({ onSubmit }: { onSubmit: any }) {
+
+  const [cartSize, setCartSize ] = useState(10);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -37,6 +46,7 @@ export function ROIForm({ onSubmit }: { onSubmit: any }) {
       email: "",
       industryType: "",
       signUpOptional: true,
+//      loyaltyCard: "",
       numberOfStores: 100,
       averageCartSize: 100,
       averageStoreSize: 5000,
@@ -52,6 +62,7 @@ export function ROIForm({ onSubmit }: { onSubmit: any }) {
       <form onSubmit={form.handleSubmit(onSubmitForm)} className="space-y-8">
         <div className="rounded-md border p-4 space-y-8">
 
+        <FormDescription>Calculate the ROI based on your own numbers to make Guest Wi-Fi a revenue generator.</FormDescription>
         <FormField
           control={form.control}
           name="name"
@@ -107,7 +118,7 @@ export function ROIForm({ onSubmit }: { onSubmit: any }) {
               <FormMessage />
             </FormItem>
           )}
-        />
+        /> 
         <FormField
           control={form.control}
           name="signUpOptional"
@@ -143,9 +154,13 @@ export function ROIForm({ onSubmit }: { onSubmit: any }) {
           name="averageCartSize"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Average Cart Size</FormLabel>
+              <FormLabel>Average Cart Size: ${cartSize} </FormLabel>
               <FormControl>
-                <Input type="number" {...field} onChange={(e) => field.onChange(parseInt(e.target.value))} />
+              <Slider defaultValue={[50]} max={1000} step={10} 
+              onValueChange={(e) => setCartSize(e[0])} 
+              onValueCommit={(e) => {field.onChange(e[0]); setCartSize(e[0])}} />
+
+                {/* <Input type="number" {...field} onChange={(e) => field.onChange(parseInt(e.target.value))} /> */}
               </FormControl>
               <FormMessage />
             </FormItem>
